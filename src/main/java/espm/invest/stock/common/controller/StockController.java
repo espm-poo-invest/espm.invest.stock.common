@@ -2,9 +2,7 @@ package espm.invest.stock.common.controller;
 
 import espm.invest.stock.common.datatype.Stock;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,16 +11,25 @@ import java.util.Optional;
 public interface StockController {
 
 
-    @GetMapping("/stock")
+    @GetMapping("/stocks")
     List<Stock> stock();
 
+    @GetMapping("/stock/{name}")
+    Stock stock(@PathVariable String name);
+
     @GetMapping("/stock/{id}")
-    Stock stock(String id);
+    Stock stockById(@PathVariable String id);
 
-    @DeleteMapping("/stock/{id}")
-    Stock deleteById(String id);
+    @GetMapping("/stock/{name}/{date}")
+    Stock stock(
+            @PathVariable String name,
+            @PathVariable String date
+    );
 
-    @PostMapping("/stock")
-    Stock save(Stock stock);
-
+    @GetMapping("/stock") //cotações da mesma moeda
+    List<Stock> cotacoes(
+            @RequestParam String name,
+            @RequestParam String ini,
+            @RequestParam String fim
+    );
 }
