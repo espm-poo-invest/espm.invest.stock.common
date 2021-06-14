@@ -26,7 +26,7 @@ public interface StockController {
             @PathVariable String date
     );
 
-    @GetMapping("/stock") //cotações da mesma moeda
+    @GetMapping("/stock") // cotações da mesma moeda
     List<Stock> cotacoes(
             @RequestParam String name,
             @RequestParam String ini,
