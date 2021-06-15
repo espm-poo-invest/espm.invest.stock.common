@@ -10,14 +10,13 @@ import java.util.Optional;
 @FeignClient("stock-service")
 public interface StockController {
 
-
     @GetMapping("/stocks")
     List<Stock> stock();
 
     @GetMapping("/stock/{name}")
     Stock stock(@PathVariable String name);
 
-    @GetMapping("/stock/{id}")
+    @GetMapping("/stock/id/{id}")
     Stock stockById(@PathVariable String id);
 
     @GetMapping("/stock/{name}/{date}")

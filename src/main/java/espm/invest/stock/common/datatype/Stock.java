@@ -1,7 +1,6 @@
 package espm.invest.stock.common.datatype;
 
 import java.util.Date;
-import java.util.UUID;
 
 public class Stock {
     private String id;
